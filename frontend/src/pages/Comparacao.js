@@ -6,7 +6,7 @@ const Comparacao = () => {
   const [equipamentoSelecionado, setEquipamentoSelecionado] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/equipamentos")
+    axios.get("https://backend-seuservico.onrender.com/equipamentos")
       .then(response => setEquipamentos(response.data))
       .catch(error => console.error("Erro ao buscar equipamentos:", error));
   }, []);
@@ -34,11 +34,17 @@ const Comparacao = () => {
         <div>
           <h2>Detalhes do Equipamento</h2>
           <p><strong>Modelo:</strong> {equipamentoSelecionado.modelo}</p>
-          <p><strong>Capacidade:</strong> {equipamentoSelecionado.capacidade} m³</p>
-          <p><strong>Valor:</strong> R$ {equipamentoSelecionado.valor.toLocaleString()}</p>
-
-          <h3>Produção</h3>
           <p><strong>Produção Horária:</strong> {equipamentoSelecionado.prod_hora} m³</p>
+
+          <h3>Produção Diária</h3>
+          <p><strong>Máxima:</strong> {equipamentoSelecionado.producao_diaria.max} m³</p>
+          <p><strong>Média:</strong> {equipamentoSelecionado.producao_diaria.media} m³</p>
+          <p><strong>Mínima:</strong> {equipamentoSelecionado.producao_diaria.minima} m³</p>
+
+          <h3>Produção Mensal</h3>
+          <p><strong>Máxima:</strong> {equipamentoSelecionado.producao_mensal.max} m³</p>
+          <p><strong>Média:</strong> {equipamentoSelecionado.producao_mensal.media} m³</p>
+          <p><strong>Mínima:</strong> {equipamentoSelecionado.producao_mensal.minima} m³</p>
         </div>
       )}
     </div>

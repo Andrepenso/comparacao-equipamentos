@@ -6,7 +6,7 @@ const EquipamentoList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("https://backend-equipamentos.onrender.com")
+    axios.get("https://backend-equipamentos.onrender.com/equipamentos")
       .then(response => {
         setEquipamentos(response.data);
         setLoading(false);
