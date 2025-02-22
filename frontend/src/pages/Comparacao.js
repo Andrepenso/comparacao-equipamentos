@@ -6,7 +6,7 @@ const Comparacao = () => {
   const [equipamentoSelecionado, setEquipamentoSelecionado] = useState(null);
 
   useEffect(() => {
-    axios.get("https://backend-seuservico.onrender.com/equipamentos")
+    axios.get("https://backend-equipamentos.onrender.com/equipamentos")
       .then(response => setEquipamentos(response.data))
       .catch(error => console.error("Erro ao buscar equipamentos:", error));
   }, []);
