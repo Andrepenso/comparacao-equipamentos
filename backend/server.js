@@ -4,25 +4,24 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware para permitir requisições de qualquer origem (CORS)
+// Ativar CORS para permitir requisições do frontend
 app.use(cors({ origin: "*" }));
-
-// Middleware para interpretar JSON no corpo das requisições
 app.use(express.json());
 
-
-// Rota para obter todos os equipamentos
-app.get("/equipamentos", (req, res) => {
-  console.log("✅ GET /equipamentos - Enviando lista de equipamentos");
-  res.json(equipamentos);
-});
+// Importando as rotas corretamente
+try {
+  const equipamentoRoutes = require("./routes/equipamentoRoutes");
+  app.use("/equipamentos", equipamentoRoutes);
+} catch (error) {
+  console.error("Erro ao carregar as rotas:", error);
+}
 
 // Rota para testar se o backend está rodando
 app.get("/", (req, res) => {
   res.send("🚀 Backend rodando com sucesso!");
 });
 
-// Iniciar o servidor
+// Iniciando o servidor
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
