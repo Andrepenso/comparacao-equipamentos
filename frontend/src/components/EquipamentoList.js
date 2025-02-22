@@ -6,7 +6,7 @@ const EquipamentoList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/equipamentos")
+    axios.get("https://backend-equipamentos.onrender.com")
       .then(response => {
         setEquipamentos(response.data);
         setLoading(false);
